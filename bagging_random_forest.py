@@ -1,9 +1,9 @@
 #-------------------------------------------------------------------------
-# AUTHOR: your name
-# FILENAME: title of the source file
-# SPECIFICATION: description of the program
+# AUTHOR: Michael Tang
+# FILENAME: bagging_random_forest.py
+# SPECIFICATION: Utilizing random forest and bagging.
 # FOR: CS 4210- Assignment #3
-# TIME SPENT: how long it took you to complete the assignment
+# TIME SPENT: 1-2 hours
 #-----------------------------------------------------------*/
 
 #IMPORTANT NOTE: DO NOT USE ANY ADVANCED PYTHON LIBRARY TO COMPLETE THIS CODE SUCH AS numpy OR pandas. You have to work here only with standard vectors and arrays
@@ -25,7 +25,6 @@ with open('optdigits.tra', 'r') as trainingFile:
   reader = csv.reader(trainingFile)
   for i, row in enumerate(reader):
       dbTraining.append (row)
-
 #reading the test data in a csv file
 with open('optdigits.tes', 'r') as testingFile:
   reader = csv.reader(testingFile)
@@ -41,7 +40,8 @@ with open('optdigits.tes', 'r') as testingFile:
 
       #populate the values of X_training and Y_training by using the bootstrapSample
       #--> add your Python code here
-
+      X_training = bootstrapSample
+      Y_training = bootstrapSample
       #fitting the decision tree to the data
       clf = tree.DecisionTreeClassifier(criterion = 'entropy', max_depth=None) #we will use a single decision tree without pruning it
       clf = clf.fit(X_training, Y_training)
@@ -57,6 +57,7 @@ with open('optdigits.tes', 'r') as testingFile:
 
           if k == 0: #for only the first base classifier, compare the prediction with the true label of the test sample here to start calculating its accuracy
              #--> add your Python code here
+             print(bootstrapSample)
 
       if k == 0: #for only the first base classifier, print its accuracy here
          #--> add your Python code here
